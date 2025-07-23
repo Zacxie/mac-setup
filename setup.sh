@@ -63,6 +63,7 @@ brew install --cask ghostty
 brew install --cask visual-studio-code
 
 ### Containerization
+brew install --cask utm
 brew install --cask docker-desktop
 brew install --cask orbstack
 
