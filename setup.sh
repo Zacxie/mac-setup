@@ -34,6 +34,9 @@ brew install zsh-autosuggestions
 brew install zsh-fast-syntax-highlighting
 brew install zoxide
 
+### Containers
+brew install act
+
 ### Security
 brew install wireshark
 brew install gobuster
