@@ -16,6 +16,7 @@ alias vim=nvim
 alias python=python3
 alias tf=terraform
 alias cat=bat
+alias lg=lazygit
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 
