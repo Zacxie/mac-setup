@@ -167,6 +167,8 @@ defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebK
 defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false
 defaults write -g NSWindowShouldDragOnGesture YES
+# set default lock screen bindings to alt+shift+backspace
+defaults write -g NSUserKeyEquivalents -dict-add "Lock Screen" "~$\U0008"
 
 
 # Installing Fonts
