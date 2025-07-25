@@ -60,7 +60,7 @@ outer.right = 8
 outer.top = [
     # Built-in MacBook display (with notch consideration)
     { monitor."^built-in retina display$" = 10 },
-    # External monitors (larger gap for SketchyBar)
+    # To get name of monitors, do "aerospace list-monitors"
     { monitor.VG27AQ3A = 38 },
     { monitor.VG27AQML1A = 38 },
     # Default fallback for other monitors
