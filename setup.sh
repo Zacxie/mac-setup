@@ -78,6 +78,7 @@ brew install --cask burp-suite
 
 ### Window manager
 brew install --cask nikitabobko/tap/aerospace
+brew install --cask betterdisplay
 
 ### Fonts
 brew install --cask sf-symbols
