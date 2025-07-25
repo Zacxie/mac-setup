@@ -80,6 +80,9 @@ brew install --cask burp-suite
 brew install --cask nikitabobko/tap/aerospace
 brew install --cask betterdisplay
 
+### Notes
+brew install --cask obsidian
+
 ### Fonts
 brew install --cask sf-symbols
 brew install --cask font-sf-mono
