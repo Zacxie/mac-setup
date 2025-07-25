@@ -83,6 +83,9 @@ brew install --cask betterdisplay
 ### Notes
 brew install --cask obsidian
 
+### Nice to have
+brew install --cask spotify
+
 ### Fonts
 brew install --cask sf-symbols
 brew install --cask font-sf-mono
