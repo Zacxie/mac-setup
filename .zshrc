@@ -17,6 +17,9 @@ alias python=python3
 alias tf=terraform
 alias cat=bat
 alias lg=lazygit
+ff() {
+    aerospace list-windows --all | fzf --bind 'enter:execute(bash -c "aerospace focus --window-id {1}")+abort'
+}
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 
@@ -27,3 +30,4 @@ export PATH="$PATH:$HOME/development/flutter/bin"
 # Add JBang to environment
 alias j!=jbang
 export PATH="$HOME/.jbang/bin:$PATH"
+
