@@ -54,8 +54,17 @@ inner.horizontal = 8
 inner.vertical = 8
 outer.left = 8
 outer.bottom = 8
-outer.top = 38
 outer.right = 8
+
+# Per-monitor top gaps to account for SketchyBar
+outer.top = [
+    # Built-in MacBook display (with notch consideration)
+    { monitor."^built-in retina display$" = 10 },
+    # External monitors (larger gap for SketchyBar)
+    { monitor.main = 38 },
+    # Default fallback for other monitors
+    38
+]
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
