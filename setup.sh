@@ -94,6 +94,9 @@ brew install --cask font-hack-nerd-font
 brew install --cask font-jetbrains-mono
 brew install --cask font-fira-code
 
+### Setup SDKMAN
+curl -s "https://get.sdkman.io" | bash
+source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 # Mac App Store Apps
 echo "Installing Mac App Store Apps..."
