@@ -59,6 +59,9 @@ ssh() {
             ;;
     esac
 }
+alias tmux-ls='tmux list-sessions 2>/dev/null || echo "No active tmux sessions"'
+alias tmux-kill-all='tmux list-sessions -F "#{session_name}" 2>/dev/null | xargs -I {} tmux kill-session -t {}'
+
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 
