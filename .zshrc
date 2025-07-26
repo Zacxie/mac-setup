@@ -21,43 +21,33 @@ ff() {
     aerospace list-windows --all | fzf --bind 'enter:execute(bash -c "aerospace focus --window-id {1}")+abort'
 }
 ssh() {
-    # Handle help, version, and configuration testing flags
-    case "$1" in
-        -h|--help|-V|--version|-G|-T|-t|-q|-Q)
-            command ssh "$@"
-            return
-            ;;
-        -*)
-            # For other flags, check if there's a hostname argument
-            local has_hostname=false
-            for arg in "$@"; do
-                if [[ "$arg" != -* ]] && [[ "$arg" != *=* ]]; then
-                    has_hostname=true
-                    local target="$arg"
-                    break
-                fi
-            done
-            
-            if [ "$has_hostname" = true ]; then
-                local session_name="ssh_towards_${target}"
-                tmux new-session -s "$session_name" "ssh $@"
-            else
-                # No hostname found, use original ssh
-                command ssh "$@"
-            fi
-            return
-            ;;
-        "")
-            echo "Usage: ssh <target>"
-            return 1
-            ;;
-        *)
-            # Normal hostname connection
-            local target="$1"
-            local session_name="ssh_towards_${target}"
-            tmux new-session -s "$session_name" "ssh $@"
-            ;;
-    esac
+    if [ -n "$TMUX" ]; then
+        command ssh "$@"
+        return
+    fi
+    
+    if [[ "$1" =~ ^(-h|--help|-V|--version|-G)$ ]]; then
+        command ssh "$@"
+        return
+    fi
+    
+    if [ $# -eq 0 ]; then
+        echo "Usage: ssh <target>"
+        return 1
+    fi
+    
+    # Extract last argument that looks like a hostname
+    local target="${@[-1]}"
+    local session_name="ssh_$(echo "$target" | sed 's/[^a-zA-Z0-9._-]/_/g')"
+    
+    # Create a script to run in tmux
+    local temp_script=$(mktemp)
+    echo "#!/bin/bash" > "$temp_script"
+    echo "ssh $(printf '%q ' "$@")" >> "$temp_script"
+    # Remove the exec $SHELL line - session will close when SSH exits
+    chmod +x "$temp_script"
+    
+    tmux new-session -s "$session_name" "$temp_script; rm '$temp_script'"
 }
 alias tmux-ls='tmux list-sessions 2>/dev/null || echo "No active tmux sessions"'
 alias tmux-kill-all='tmux list-sessions -F "#{session_name}" 2>/dev/null | xargs -I {} tmux kill-session -t {}'
