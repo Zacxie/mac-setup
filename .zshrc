@@ -20,6 +20,10 @@ alias lg=lazygit
 ff() {
     aerospace list-windows --all | fzf --bind 'enter:execute(bash -c "aerospace focus --window-id {1}")+abort'
 }
+ssh() {
+    [ $# -eq 0 ] && { echo "usage: ssh <target>"; return 1; }
+    tmux new-session -s "ssh_towards_$1" "ssh $1"
+}
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 
