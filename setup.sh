@@ -55,6 +55,7 @@ brew install lazygit
 brew install tlrc
 brew install spotify_player
 brew install docker
+brew install gh
 
 ## zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
